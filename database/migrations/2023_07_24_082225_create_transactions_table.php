@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->double('debit')->nullable();
             $table->double('credit')->nullable();
+            $table->string('trasaction_trasaction_type');
             $table->string('trasaction_vehicle_arrival');
             $table->string('trasaction_customer');
             $table->string('trasaction_user');
