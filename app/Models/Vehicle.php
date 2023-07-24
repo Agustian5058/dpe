@@ -31,4 +31,8 @@ class Vehicle extends Model
             set: fn (string $value) => strtolower($value),
         );
     }
+    public function arrival_vehicle()
+    {
+        return $this->hasMany('App/Models/VehicleArrival', 'arrival_vehicle');
+    }
 }

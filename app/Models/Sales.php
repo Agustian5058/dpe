@@ -31,4 +31,8 @@ class Sales extends Model
             set: fn (string $value) => strtolower($value),
         );
     }
+    public function customer_sales()
+    {
+        return $this->hasMany('App/Models/Customer', 'customer_sales');
+    }
 }

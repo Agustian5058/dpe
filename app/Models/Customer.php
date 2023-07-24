@@ -59,12 +59,12 @@ class Customer extends Model
             set: fn (string $value) => strtolower($value),
         );
     }
-    protected function customer_sales(): Attribute
+    protected function customer_sales()
     {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
+        return $this->belongsTo('App/Models/Sales', 'customer_sales', 'sales_id');
     }
-
+    public function trasaction_customer()
+    {
+        return $this->hasMany('App/Models/Transaction', 'trasaction_customer');
+    }
 }

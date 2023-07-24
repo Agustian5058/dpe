@@ -87,6 +87,13 @@ class Transaction extends Model
             set: fn (string $value) => strtolower($value),
         );
     }
+    protected function description(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => ucfirst($value),
+            set: fn (string $value) => strtolower($value),
+        );
+    }
     protected function debit(): Attribute
     {
         return Attribute::make(
@@ -101,25 +108,20 @@ class Transaction extends Model
             set: fn (string $value) => strtolower($value),
         );
     }
-    protected function trasaction_vehicle_arrival(): Attribute
+    protected function trasaction_trasaction_type()
     {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
+        return $this->belongsTo('App/Models/TransactionType', 'trasaction_trasaction_type', 'transaction_name');
     }
-    protected function trasaction_customer(): Attribute
+    protected function trasaction_vehicle_arrival()
     {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
+        return $this->belongsTo('App/Models/VehicleArrival', 'trasaction_vehicle_arrival', 'arrival_id');
     }
-    protected function trasaction_user(): Attribute
+    protected function trasaction_customer()
     {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
+        return $this->belongsTo('App/Models/Customer', 'trasaction_customer', 'customer_id');
+    }
+    protected function trasaction_user()
+    {
+        return $this->belongsTo('App/Models/Users', 'trasaction_user', 'id');
     }
 }

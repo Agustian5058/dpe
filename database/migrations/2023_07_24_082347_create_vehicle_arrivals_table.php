@@ -15,8 +15,6 @@ return new class extends Migration
             $table->string('arrival_id')->primary();
             $table->date('arrival_date');
             $table->string('arrival_vehicle');
-            $table->string('consignee');
-            $table->string('goods_type');
             $table->timestamps();
         });
     }

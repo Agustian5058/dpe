@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class TransactionType extends Model
 {
     use HasFactory;
-    
+
     protected function transaction_name(): Attribute
     {
         return Attribute::make(
@@ -30,5 +30,9 @@ class TransactionType extends Model
             get: fn (string $value) => ucfirst($value),
             set: fn (string $value) => strtolower($value),
         );
+    }
+    public function trasaction_trasaction_type()
+    {
+        return $this->hasMany('App/Models/Transaction', 'trasaction_trasaction_type');
     }
 }

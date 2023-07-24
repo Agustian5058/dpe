@@ -23,11 +23,12 @@ class VehicleArrival extends Model
             set: fn (string $value) => strtolower($value),
         );
     }
-    protected function arrival_vehicle(): Attribute
+    protected function arrival_vehicle()
     {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
+        return $this->belongsTo('App/Models/Vehicle', 'arrival_vehicle', 'vehicle_id');
+    }
+    public function trasaction_arrival()
+    {
+        return $this->hasMany('App/Models/Transaction', 'trasaction_arrival');
     }
 }
