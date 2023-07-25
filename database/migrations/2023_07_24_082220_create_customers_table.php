@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('customer_postal_code')->nullable();
             $table->string('customer_phone')->nullable();
             $table->string('customer_fax')->nullable();
+            $table->string('customer_sales');
             $table->foreign('customer_sales')->references('sales_id')->on('sales')->onDelete('cascade');
             $table->timestamps();
         });

@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-    Route::resource('/sales', \App\Http\Controllers\SalesController::class);
 });
+Route::resource('/sales', \App\Http\Controllers\SalesController::class);
+Route::resource('/login', \App\Http\Controllers\LoginController::class);

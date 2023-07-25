@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('vehicle_arrivals', function (Blueprint $table) {
             $table->string('arrival_id')->primary();
             $table->date('arrival_date');
-            $table->foreign('arrival_vehicle')->references('vehicle_id')->on('vehicle')->onDelete('cascade');
+            $table->string('arrival_vehicle');
+            $table->foreign('arrival_vehicle')->references('vehicle_id')->on('vehicles')->onDelete('cascade');
             $table->timestamps();
         });
     }
