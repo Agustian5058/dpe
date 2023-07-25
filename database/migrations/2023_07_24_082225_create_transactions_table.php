@@ -26,10 +26,10 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->double('debit')->nullable();
             $table->double('credit')->nullable();
-            $table->string('trasaction_trasaction_type');
-            $table->string('trasaction_vehicle_arrival');
-            $table->string('trasaction_customer');
-            $table->string('trasaction_user');
+            $table->string('trasaction_trasaction_type')->references('transaction_name')->on('transaction_type')->onDelete('cascade');;
+            $table->string('trasaction_vehicle_arrival')->references('arrival_id')->on('vehicle_arrival')->onDelete('cascade');;
+            $table->string('trasaction_customer')->references('customer_id')->on('customer')->onDelete('cascade');;
+            $table->string('trasaction_user')->references('id')->on('sales')->onDelete('cascade');;
             $table->timestamps();
         });
     }
