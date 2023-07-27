@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->integer("created_by")->nullable();
+            $table->integer("updated_by")->nullable();
+            $table->integer("deleted_by")->nullable();
+            $table->softDeletes();
         });
     }
 

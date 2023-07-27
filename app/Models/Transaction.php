@@ -9,6 +9,30 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'transaction_id',
+        'transaction_date',
+        'transaction_container_number',
+        'consignee',
+        'goods_type',
+        'feet',
+        'qty',
+        'size',
+        'unit',
+        'price',
+        'destination',
+        'description',
+        'debit',
+        'credit',
+        'transaction_transaction_type',
+        'transaction_vehicle_arrival',
+        'transaction_customer',
+        'transaction_user',
+        'created_by',
+        'updated_by',
+        'deleted_by'
+
+    ];
 
     protected function transaction_id(): Attribute
     {
@@ -108,20 +132,20 @@ class Transaction extends Model
             set: fn (string $value) => strtolower($value),
         );
     }
-    protected function trasaction_trasaction_type()
+    protected function transaction_transaction_type()
     {
-        return $this->belongsTo('App/Models/TransactionType', 'trasaction_trasaction_type', 'transaction_name');
+        return $this->belongsTo('App/Models/TransactionType', 'transaction_transaction_type', 'transaction_name');
     }
-    protected function trasaction_vehicle_arrival()
+    protected function transaction_vehicle_arrival()
     {
-        return $this->belongsTo('App/Models/VehicleArrival', 'trasaction_vehicle_arrival', 'arrival_id');
+        return $this->belongsTo('App/Models/VehicleArrival', 'transaction_vehicle_arrival', 'arrival_id');
     }
-    protected function trasaction_customer()
+    protected function transaction_customer()
     {
-        return $this->belongsTo('App/Models/Customer', 'trasaction_customer', 'customer_id');
+        return $this->belongsTo('App/Models/Customer', 'transaction_customer', 'customer_id');
     }
-    protected function trasaction_user()
+    protected function transaction_user()
     {
-        return $this->belongsTo('App/Models/Users', 'trasaction_user', 'id');
+        return $this->belongsTo('App/Models/Users', 'transaction_user', 'id');
     }
 }

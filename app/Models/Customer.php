@@ -9,62 +9,41 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'customer_id',
+        'customer_name',
+        'customer_sales',
+        'customer_phone',
+        'customer_postal_code',
+        'customer_fax',
+        'customer_address',
+        'customer_province',
+        'customer_city',
+        'created_by',
+        'updated_by',
+        'deleted_by'
 
+    ];
     protected function customer_id(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
+            get: fn (string $value) => strtoupper($value),
+            set: fn (string $value) => strtoupper($value),
         );
     }
     protected function customer_name(): Attribute
     {
         return Attribute::make(
             get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function customer_address(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function customer_city(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function customer_postal_code(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function customer_phone(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function customer_fax(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
+            set: fn (string $value) => ucfirst($value),
         );
     }
     protected function customer_sales()
     {
         return $this->belongsTo('App/Models/Sales', 'customer_sales', 'sales_id');
     }
-    public function trasaction_customer()
+    public function transaction_customer()
     {
-        return $this->hasMany('App/Models/Transaction', 'trasaction_customer');
+        return $this->hasMany('App/Models/Transaction', 'trasanction_customer');
     }
 }

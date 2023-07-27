@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->string('transaction_id')->primary();
+            $table->id();
+            $table->string('transaction_id')->unique();
             $table->date('transaction_date');
             $table->string('transaction_container_number');
             $table->string('consignee')->nullable();
@@ -26,15 +27,19 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->double('debit')->nullable();
             $table->double('credit')->nullable();
-            $table->string('trasaction_trasaction_type');
-            $table->string('trasaction_vehicle_arrival');
-            $table->string('trasaction_customer');
-            $table->string('trasaction_user');
-            $table->foreign('trasaction_trasaction_type')->references('transaction_name')->on('transaction_types')->onDelete('cascade');;
-            $table->foreign('trasaction_vehicle_arrival')->references('arrival_id')->on('vehicle_arrivals')->onDelete('cascade');;
-            $table->foreign('trasaction_customer')->references('customer_id')->on('customers')->onDelete('cascade');;
-            $table->foreign('trasaction_user')->references('sales_id')->on('sales')->onDelete('cascade');;
+            $table->string('transaction_transaction_type');
+            $table->string('transaction_vehicle_arrival');
+            $table->string('transaction_customer');
+            $table->string('transaction_user');
+            $table->foreign('transaction_transaction_type')->references('transaction_name')->on('transaction_types')->onDelete('cascade');;
+            $table->foreign('transaction_vehicle_arrival')->references('arrival_id')->on('vehicle_arrivals')->onDelete('cascade');;
+            $table->foreign('transaction_customer')->references('customer_id')->on('customers')->onDelete('cascade');;
+            $table->foreign('transaction_user')->references('sales_id')->on('sales')->onDelete('cascade');;
             $table->timestamps();
+            $table->integer("created_by")->nullable();
+            $table->integer("updated_by")->nullable();
+            $table->integer("deleted_by")->nullable();
+            $table->softDeletes();
         });
     }
 

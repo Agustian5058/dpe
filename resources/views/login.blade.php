@@ -12,11 +12,11 @@
     <title>Login</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{asset(assets/vendor/fontawesome-free/css/all.min.css)}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{asset(assets/css/sb-admin-2.min.css)}}" rel="stylesheet">
+    <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -24,28 +24,36 @@
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="col-xl-6 col-lg-12 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block" style="background: url('{{asset(assets/img/black_logo.png'); background-position: center; background-size: cover;"></div>
-                            <div class="col-lg-6">
+                        <div class="col-lg-1 d-none d-lg-block"></div>
+                            <div class="col-lg-10">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Duta Pratama Ekspress</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">DUTA PRATAMA EKSPRESS</h1>
                                     </div>
-                                    <form action="" class="user" method="POST">
-                                        <?php if (session()->getFlashdata("error")) { ?>
+                                    <form action="{{route('login.index')}}" class="user" method="POST">
+                                        @csrf
+                                        @if (session()->has("error"))
                                             <div class="alert alert-danger">
-                                                <?php echo session()->getFlashdata("error"); ?>
+                                                {{ session("error") }}
                                             </div>
-                                        <?php } ?>
+                                        @endif
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="username" value="<?php echo session()->getFlashdata("username"); ?>" aria-describedby="emailHelp" placeholder="Enter Username ...">
+                                            <input type="text" class="form-control" id="username" name="username" value="{{session('username')}}" aria-describedby="emailHelp" placeholder="Masukkan Username ...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" name="password" placeholder="Password">
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block" name="login">
                                             Login
@@ -65,15 +73,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset(assets/vendor/jquery/jquery.min.js)}}">
-                                </script>
-                                <script src="{{asset(assets/vendor/bootstrap/js/bootstrap.bundle.min.js)}}"></script>
+    <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-                                <!-- Core plugin JavaScript-->
-                                <script src="{{asset(assets/vendor/jquery-easing/jquery.easing.min.js)}}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{{asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
-                                <!-- Custom scripts for all pages-->
-                                <script src="{{asset(assets/js/sb-admin-2.min.js)}}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{{asset('assets/js/sb-admin-2.min.js')}}"></script>
 
 </body>
 

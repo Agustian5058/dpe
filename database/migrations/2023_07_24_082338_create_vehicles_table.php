@@ -12,10 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->string('vehicle_id')->primary();
+            $table->id();
+            $table->string('vehicle_id')->unique();
             $table->string('vehicle_type');
             $table->string('vehicle_name');
             $table->timestamps();
+            $table->integer("created_by")->nullable();
+            $table->integer("updated_by")->nullable();
+            $table->integer("deleted_by")->nullable();
+            $table->softDeletes();
         });
     }
     /**

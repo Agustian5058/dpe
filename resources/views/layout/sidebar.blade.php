@@ -2,8 +2,8 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-        <div class="sidebar-brand-text mx-3"><?php echo getenv("app_name"); ?></div>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard.index')}}">
+        <div class="sidebar-brand-text mx-3">{{getenv("app_name")}}</div>
     </a>
 
     <!-- Divider -->
@@ -11,12 +11,12 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="{{route('dashboard.index')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
-    <?php if (session()->get("user_type") === "admin") { ?>
+    @if (strtolower(session("role")) == "admin")
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -31,17 +31,18 @@
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Main</span>
             </a>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapseOne" class="collapse <?php if (in_array(session('pagename'), ["Profil", "User", "Sales", "Customer", "Kapal", "Kedatangan Kapal", "Jenis Transaksi"])) {echo 'show';} ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar" aria-expanded="true">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Main</h6>
-                    <a class="collapse-item" href="/branch">Branch</a>
-                    <a class="collapse-item" href="/product">Product</a>
-                    <a class="collapse-item" href="/team">Team</a>
-                    <a class="collapse-item" href="#">Member</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Profil') {echo 'active';} ?>" href="{{route('profile.show', session('username'))}}">Profil</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'User') {echo 'active';} ?>" href="{{route('user.index')}}" >User</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Sales') {echo 'active';} ?>" href="{{route('sales.index')}}">Sales</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Customer') {echo 'active';} ?>" href="{{route('customer.index')}}">Customer</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Kapal') {echo 'active';} ?>" href="{{route('vehicle.index')}}">Kapal</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Jenis Transaksi') {echo 'active';} ?>" href="{{route('transaction_type.index')}}">Jenis Transaksi</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Addon</h6>
-                    <a class="collapse-item" href="#">Gratuity</a>
-                    <a class="collapse-item" href="#">Product Stock</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Kedatangan Kapal') {echo 'active';} ?>" href="{{route('arrival.index')}}">Kedatangan Kapal</a>
                 </div>
             </div>
         </li>
@@ -82,9 +83,9 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-    <?php } ?>
+    @endif
 
-    <?php if (session()->get("user_type") === "cashier") { ?>
+    @if (strtolower(session("role")) == "staff")
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -130,11 +131,9 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider">
+    @endif
 
-    <?php } ?>
-
-    <?php if (session()->get("user_type") === "capster") { ?>
-
+    @if (strtolower(session("role")) == "sales")
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -160,8 +159,7 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-
-    <?php } ?>
+    @endif
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

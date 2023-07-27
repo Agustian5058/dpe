@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->string('customer_id')->primary();
+            $table->id();
+            $table->string('customer_id')->unique();
             $table->string('customer_name')->nullable();
             $table->string('customer_address')->nullable();
             $table->string('customer_city')->nullable();
@@ -23,6 +24,10 @@ return new class extends Migration
             $table->string('customer_sales');
             $table->foreign('customer_sales')->references('sales_id')->on('sales')->onDelete('cascade');
             $table->timestamps();
+            $table->integer("created_by")->nullable();
+            $table->integer("updated_by")->nullable();
+            $table->integer("deleted_by")->nullable();
+            $table->softDeletes();
         });
     }
 

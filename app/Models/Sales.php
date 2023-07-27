@@ -9,26 +9,34 @@ use Illuminate\Database\Eloquent\Model;
 class Sales extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'sales_id',
+        'sales_name',
+        'sales_description',
+        'created_by',
+        'updated_by',
+        'deleted_by'
+    ];
 
     protected function sales_id(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
+            get: fn (string $value) => strtoupper($value),
+            set: fn (string $value) => strtoupper($value),
         );
     }
     protected function sales_name(): Attribute
     {
         return Attribute::make(
             get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
+            set: fn (string $value) => ucfirst($value),
         );
     }
     protected function sales_description(): Attribute
     {
         return Attribute::make(
             get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
+            set: fn (string $value) => ucfirst($value),
         );
     }
     public function customer_sales()

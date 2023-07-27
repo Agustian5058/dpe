@@ -12,10 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transaction_types', function (Blueprint $table) {
-            $table->string('transaction_name')->primary();
+            $table->id();
+            $table->string('transaction_name')->unique();
             $table->string('transaction_debit_credit');
             $table->string('transaction_initial')->nullable();
             $table->timestamps();
+            $table->integer("created_by")->nullable();
+            $table->integer("updated_by")->nullable();
+            $table->integer("deleted_by")->nullable();
+            $table->softDeletes();
         });
     }
 

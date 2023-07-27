@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; <?php echo getenv("app_name"); ?> <?php echo getenv("app_year_development"); ?></span>
+            <span>Copyright &copy; {{env("APP_NAME", "DUTA PRATAMA EKSPRESS")}} {{env("APP_YEAR", "2023")}}</span>
         </div>
     </div>
 </footer>

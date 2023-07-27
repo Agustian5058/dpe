@@ -12,10 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->string('sales_id')->primary();
+            $table->id();
+            $table->string('sales_id')->unique();
             $table->string('sales_name')->nullable();
             $table->string('sales_description')->nullable();
             $table->timestamps();
+            $table->integer("created_by")->nullable();
+            $table->integer("updated_by")->nullable();
+            $table->integer("deleted_by")->nullable();
+            $table->softDeletes();
         });
     }
 

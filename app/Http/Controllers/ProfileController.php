@@ -1,39 +1,35 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Models\User;
-class UserController extends Controller
+use Illuminate\Http\Request;
+
+class ProfileController extends Controller
 {
-    public function index(Request $request)
+    public function show(Request $request, $username)
     {
         if ($request->session()->has("username")) {
-            $request->session()->put("pagename", "User");
-            $dataUsers = User::latest()->paginate(10);
-            return view("user", compact("dataUsers"));
-        } else {
-            return view("login");
-        }
-    }
-    
-    public function edit(Request $request, $username)
-    {
-        if ($request->session()->has("username")) {
-            $request->session()->put("pagename", "User");
-            $dataUser = User::where("username", $username)->firstOrFail();
-            return view("user_update", compact("dataUser"));
+            $request->session()->put("pagename", "Profil");
+            $profile = User::where("username", $username)->firstOrFail();
+            return view("profile", compact("profile"));
         } else {
             return view("login");
         }
     }
 
-    public function show(Request $request, $username)
+    public function store(Request $request)
     {
         if ($request->session()->has("username")) {
-            $request->session()->put("pagename", "User");
-            $dataUsers = User::where("username", $username)->firstOrFail();
-            return view("user", compact("dataUsers"));
+            $username = $request->username;
+            $password = $request->password;
+            $email = $request->email;
+            $name = $request->name;
+            $role = $request->role;
+            $phone = $request->phone;
+            
+            $request->session()->put("pagename", "Profil");
+            $profile = User::where("username", $username)->firstOrFail();
+            return view("profile", compact("profile"));
         } else {
             return view("login");
         }
@@ -72,32 +68,6 @@ class UserController extends Controller
                 $request->session()->flash("message", "Password User " . $request->username . " Telah Direset");
                 $request->session()->flash("status", "success");
             }
-            return redirect("/user");
-        } else {
-            return view("login");
-        }
-    }
-
-    public function store(Request $request)
-    {
-        if ($request->session()->has("username")) {
-            $this->validate($request, [
-                "username"  => "required",
-                "name"      => "required",
-                "role"      => "required"
-            ]);
-            User::create([
-                "username"      => $request->username,
-                "password"      => md5($request->username),
-                "name"          => $request->name,
-                "role"          => $request->role,
-                "email"         => $request->email,
-                "phone"         => $request->phone,
-                "created_by"    => session("id")
-            ]);
-            $request->session()->put("pagename", "User");
-            $request->session()->flash("message", "User " . $request->username . " Telah Ditambahkan");
-            $request->session()->flash("status", "success");
             return redirect("/user");
         } else {
             return view("login");

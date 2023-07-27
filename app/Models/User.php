@@ -22,13 +22,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'username',
+        'role',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 
     protected function role(): Attribute
     {
         return Attribute::make(
             get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
+            set: fn (string $value) => ucwords($value),
         );
     }
     protected function username(): Attribute
@@ -38,16 +44,9 @@ class User extends Authenticatable
             set: fn (string $value) => strtolower($value),
         );
     }
-    protected function phone(): Attribute
+    public function transaction_user()
     {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    public function trasaction_user()
-    {
-        return $this->hasMany('App/Models/Transaction', 'trasaction_user');
+        return $this->hasMany('App/Models/Transaction', 'transaction_user');
     }
 
     /**
