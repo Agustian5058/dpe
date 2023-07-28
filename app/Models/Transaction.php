@@ -13,21 +13,15 @@ class Transaction extends Model
         'transaction_id',
         'transaction_date',
         'transaction_container_number',
-        'consignee',
         'goods_type',
         'feet',
         'qty',
-        'size',
-        'unit',
         'price',
-        'destination',
-        'description',
-        'debit',
-        'credit',
+        'note',
+        'transaction_debit_credit',
         'transaction_transaction_type',
         'transaction_vehicle_arrival',
         'transaction_customer',
-        'transaction_user',
         'created_by',
         'updated_by',
         'deleted_by'
@@ -143,9 +137,5 @@ class Transaction extends Model
     protected function transaction_customer()
     {
         return $this->belongsTo('App/Models/Customer', 'transaction_customer', 'customer_id');
-    }
-    protected function transaction_user()
-    {
-        return $this->belongsTo('App/Models/Users', 'transaction_user', 'id');
     }
 }

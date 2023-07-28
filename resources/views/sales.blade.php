@@ -84,12 +84,15 @@
                                 <div class="modal-body">Masukkan Data Sales Baru. Kode Sales tidak boleh sama.
                                     <div class="my-4"></div>
                                     <div class="form-group">
+                                        <label>Kode Sales</label>
                                         <input type="text" class="form-control" name="sales_id" placeholder="Masukkan Kode Sales ...">
                                     </div>
                                     <div class="form-group">
+                                    <label>Nama Lengkap Sales</label>
                                         <input type="text" class="form-control" name="sales_name" placeholder="Masukkan Nama Lengkap Sales ...">
                                     </div>
                                     <div class="form-group">
+                                    <label>Keterangan</label>
                                         <input type="text" class="form-control" name="sales_description" placeholder="Masukkan Keterangan ...">
                                     </div>
                                 </div>

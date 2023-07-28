@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::resource('/sales', \App\Http\Controllers\SalesController::class);
 Route::resource('/login', \App\Http\Controllers\LoginController::class);
 Route::resource('/logout', \App\Http\Controllers\LogoutController::class);

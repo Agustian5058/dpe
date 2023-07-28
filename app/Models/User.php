@@ -44,10 +44,6 @@ class User extends Authenticatable
             set: fn (string $value) => strtolower($value),
         );
     }
-    public function transaction_user()
-    {
-        return $this->hasMany('App/Models/Transaction', 'transaction_user');
-    }
 
     /**
      * The attributes that should be hidden for serialization.

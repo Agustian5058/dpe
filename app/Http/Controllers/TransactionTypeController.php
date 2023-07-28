@@ -46,12 +46,10 @@ class TransactionTypeController extends Controller
             $this->validate($request, [
                 "transaction_name"          => "required",
                 "transaction_debit_credit"  => "required",
-                "transaction_initial"       => ""
             ]);
             $dataTransactionType = TransactionType::where("transaction_name", $request->transaction_name)->firstOrFail();
             $dataTransactionType->update([
                 "transaction_debit_credit"  => $request->transaction_debit_credit,
-                "transaction_initial"       => $request->transaction_initial,
                 "updated_by"                => session("id")
             ]);
             $request->session()->put("pagename", "Jenis Transaksi");
@@ -69,12 +67,10 @@ class TransactionTypeController extends Controller
             $this->validate($request, [
                 "transaction_name"          => "required",
                 "transaction_debit_credit"  => "required",
-                "transaction_initial"       => ""
             ]);
             TransactionType::create([
                 "transaction_name"          => $request->transaction_name,
                 "transaction_debit_credit"  => $request->transaction_debit_credit,
-                "transaction_initial"       => $request->transaction_initial,
                 "created_by"                => session("id")
             ]);
             $request->session()->put("pagename", "Jenis Transaksi");

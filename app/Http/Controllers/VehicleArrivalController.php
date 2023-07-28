@@ -88,6 +88,21 @@ class VehicleArrivalController extends Controller
             return view("login");
         }
     }
+
+    public function destroy(Request $request, $arrival_id)
+    {
+        if ($request->session()->has("username")) {
+            $request->session()->put("pagename", "Kedatangan Kapal");
+            $dataArrivals = VehicleArrival::where("arrival_id", $arrival_id)->firstOrFail();
+            $request->session()->flash("message", "Kedatangan " . $request->customer_id . " " . $request->customer_name . " Telah Dihapus");
+            $request->session()->flash("status", "success");
+            $dataArrivals->delete();
+            return redirect("/arrival");
+        } else {
+            return view("login");
+        }
+    }
+
 }
 
 

@@ -91,18 +91,23 @@
                                 <div class="modal-body">Masukkan Data User Baru. Username tidak boleh sama.
                                     <div class="my-4"></div>
                                     <div class="form-group">
+                                        <label>Username</label>
                                         <input type="text" class="form-control" name="username" placeholder="Masukkan Username ...">
                                     </div>
                                     <div class="form-group">
+                                        <label>Nama Lengkap</label>
                                         <input type="text" class="form-control" name="name" placeholder="Masukkan Nama Lengkap ...">
                                     </div>
                                     <div class="form-group">
+                                        <label>Email</label>
                                         <input type="email" class="form-control" name="email" placeholder="Masukkan Email ...">
                                     </div>
                                     <div class="form-group">
+                                        <label>Nomor HP</label>
                                         <input type="text" class="form-control" name="phone" placeholder="Masukkan Nomor HP ...">
                                     </div>
                                     <div class="form-group">
+                                        <label>Role</label>
                                         <select class="form-control" name="role">
                                             <option value="Staff">-- Pilih Role (Staff)--</option>
                                             <option value="Staff">Staff</option>
@@ -126,7 +131,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah User Baru</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Reset Password User</h5>
                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -138,6 +143,7 @@
                                 <div class="modal-body">Apakah anda yakin untuk melakukan reset password user berikut
                                     <div class="my-4"></div>
                                     <div class="form-group">
+                                        <label>Username</label>
                                         <input type="text" class="form-control" name="username" value="{{$dataUser->username}}" disabled>
                                     </div>
                                 <div class="modal-footer">

@@ -82,9 +82,11 @@
                                 <div class="modal-body">Masukkan Data Kapal Baru. Nomor Kapal tidak boleh sama.
                                     <div class="my-4"></div>
                                     <div class="form-group">
+                                    <label>Nomor Kapal</label>
                                         <input type="text" class="form-control" name="vehicle_id" placeholder="Masukkan Nomor Kapal ...">
                                     </div>
                                     <div class="form-group">
+                                    <label>Jenis Kapal</label>
                                         <select class="form-control" name="vehicle_type">
                                             <option value="Kapal">-- Pilih Jenis Kapal (Kapal)--</option>
                                             <option value="Kapal">Kapal</option>
@@ -95,6 +97,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                    <label>Nama Kapal</label>
                                         <input type="text" class="form-control" name="vehicle_name" placeholder="Masukkan Nama Kapal ...">
                                     </div>
                                 </div>

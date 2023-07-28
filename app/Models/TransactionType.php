@@ -12,7 +12,6 @@ class TransactionType extends Model
     protected $fillable = [
         'transaction_name',
         'transaction_debit_credit',
-        'transaction_initial',
         'created_by',
         'updated_by',
         'deleted_by'
@@ -26,13 +25,6 @@ class TransactionType extends Model
         );
     }
     protected function transaction_debit_credit(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function transaction_initial(): Attribute
     {
         return Attribute::make(
             get: fn (string $value) => ucfirst($value),

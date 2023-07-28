@@ -29,11 +29,11 @@
         <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>Main</span>
+                <span>Menu</span>
             </a>
             <div id="collapseOne" class="collapse <?php if (in_array(session('pagename'), ["Profil", "User", "Sales", "Customer", "Kapal", "Kedatangan Kapal", "Jenis Transaksi"])) {echo 'show';} ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar" aria-expanded="true">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Main</h6>
+                    <h6 class="collapse-header">Menu Utama</h6>
                     <a class="collapse-item <?php if (session('pagename') == 'Profil') {echo 'active';} ?>" href="{{route('profile.show', session('username'))}}">Profil</a>
                     <a class="collapse-item <?php if (session('pagename') == 'User') {echo 'active';} ?>" href="{{route('user.index')}}" >User</a>
                     <a class="collapse-item <?php if (session('pagename') == 'Sales') {echo 'active';} ?>" href="{{route('sales.index')}}">Sales</a>
@@ -41,7 +41,7 @@
                     <a class="collapse-item <?php if (session('pagename') == 'Kapal') {echo 'active';} ?>" href="{{route('vehicle.index')}}">Kapal</a>
                     <a class="collapse-item <?php if (session('pagename') == 'Jenis Transaksi') {echo 'active';} ?>" href="{{route('transaction_type.index')}}">Jenis Transaksi</a>
                     <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Addon</h6>
+                    <h6 class="collapse-header">Menu Tambahan</h6>
                     <a class="collapse-item <?php if (session('pagename') == 'Kedatangan Kapal') {echo 'active';} ?>" href="{{route('arrival.index')}}">Kedatangan Kapal</a>
                 </div>
             </div>
@@ -51,13 +51,12 @@
         <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>Transaction</span>
+                <span>Transaksi</span>
             </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapseTwo" class="collapse <?php if (in_array(session('pagename'), ["Transaksi Piutang"])) {echo 'show';} ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Transaction</h6>
-                    <a class="collapse-item" href="#">Transaction</a>
-                    <a class="collapse-item" href="#"> Spending Transaction</a>
+                    <h6 class="collapse-header">Transaksi</h6>
+                    <a class="collapse-item <?php if (session('pagename') == 'Transaksi Piutang') {echo 'active';} ?>" href="{{route('transaction.index')}}">Transaksi Piutang</a>
                 </div>
             </div>
         </li>
@@ -66,11 +65,11 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>Report</span>
+                <span>Laporan</span>
             </a>
             <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Report Detail:</h6>
+                    <h6 class="collapse-header">Jenis Laporan</h6>
                     <a class="collapse-item" href="#">Stock</a>
                     <a class="collapse-item" href="#">Finance</a>
                     <a class="collapse-item" href="#">Transaction</a>

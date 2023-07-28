@@ -102,12 +102,15 @@
                                 <div class="modal-body">Masukkan Data Customer Baru. Kode Customer tidak boleh sama.
                                     <div class="my-4"></div>
                                     <div class="form-group">
+                                    <label>Kode Customer</label>
                                         <input type="text" class="form-control" name="customer_id" placeholder="Masukkan Kode Customer ...">
                                     </div>
                                     <div class="form-group">
+                                    <label>Nama Customer</label>
                                         <input type="text" class="form-control" name="customer_name" placeholder="Masukkan Nama Customer ...">
                                     </div>
                                     <div class="form-group">
+                                    <label>Handle Oleh</label>
                                         <select class="form-control" name="customer_sales">
                                             <option value="">-- Pilih Handle Oleh --</option>
                                             @foreach ($dataSaless as $dataSales)
@@ -116,21 +119,27 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                    <label>Nomor HP</label>
                                         <input type="text" class="form-control" name="customer_phone" placeholder="Masukkan Nomor HP ...">
                                     </div>
                                     <div class="form-group">
+                                    <label>Alamat</label>
                                         <input type="text" class="form-control" name="customer_address" placeholder="Masukkan Alamat ...">
                                     </div>
                                     <div class="form-group">
+                                    <label>Provinsi</label>
                                         <input type="text" class="form-control" name="customer_province" placeholder="Masukkan Provinsi ...">
                                     </div>
                                     <div class="form-group">
+                                    <label>Nama Kota</label>
                                         <input type="text" class="form-control" name="customer_city" placeholder="Masukkan Nama Kota ...">
                                     </div>
                                     <div class="form-group">
+                                    <label>Kode Pos</label>
                                         <input type="text" class="form-control" name="customer_postal_code" placeholder="Masukkan Kode Pos ...">
                                     </div>
                                     <div class="form-group">
+                                    <label>Nomor Fax</label>
                                         <input type="text" class="form-control" name="customer_fax" placeholder="Masukkan Nomor Fax ...">
                                     </div>
                                 </div>

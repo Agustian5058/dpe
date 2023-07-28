@@ -87,13 +87,16 @@
                                     <input type="hidden" name="action" value="password_update">
                                     <input type="hidden" name="username" value="{{$profile->username}}">
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="current_password" placeholder="Masukkan Current Password ...">
+                                        <label>Password Sekarang</label>
+                                        <input type="password" class="form-control" name="current_password" placeholder="Masukkan Password Sekarang ...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="new_password" placeholder="Masukkan New Password ...">
+                                        <label>Password Baru</label>
+                                        <input type="password" class="form-control" name="new_password" placeholder="Masukkan Password Baru ...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="confirmation_password" placeholder="Re-enter New Password ...">
+                                        <label>Masukkan Kembali Password Baru</label>
+                                        <input type="password" class="form-control" name="confirmation_password" placeholder="Masukkan Ulang Password Baru ...">
                                     </div>
                                 </div>
                                 <div class="modal-footer">

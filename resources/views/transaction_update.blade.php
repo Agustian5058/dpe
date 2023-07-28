@@ -45,6 +45,9 @@
                                                         <option value="Credit">Credit</option>
                                                     </select>
                                                 </div>
+                                                <div class="form-group">
+                                                    <input type="text" value="{{$dataTransactionType->transaction_initial}}" class="form-control" name="transaction_initial" placeholder="Masukkan Inisial Transaksi ...">
+                                                </div>
                                                 <button type="submit" class="btn btn-primary btn-user btn-block col-lg-4" name="update">
                                                     Update
                                                 </button>

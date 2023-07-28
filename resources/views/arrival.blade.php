@@ -53,7 +53,11 @@
                                                 <td>{{ $dataArrival->arrival_date }}</td>
                                                 <td>
                                                     @if (session("role") == "Admin")
-                                                        <a href="{{route('arrival.destroy', $dataArrival->arrival_id)}}" class="user_update btn btn-danger">Hapus</a>
+                                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('arrival.destroy', $dataArrival->arrival_id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                                        </form>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -85,14 +89,16 @@
                                 <div class="modal-body">Masukkan Data Kedatangan Kapal Baru. Kedatangan Kapal tidak boleh sama.
                                     <div class="my-4"></div>
                                     <div class="form-group">
+                                    <label>Pilih Kapal</label>
                                         <select class="form-control" name="arrival_vehicle">
                                             <option value="">-- Pilih Kapal--</option>
                                             @foreach ($dataVehicles as $dataVehicle)
-                                                <option value="{{$dataVehicle->vehicle_id}}">{{$dataVehicle->vehicle_name}}</option>
+                                                <option value="{{$dataVehicle->vehicle_id}}">{{$dataVehicle->vehicle_id}} - {{$dataVehicle->vehicle_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                    <label>Tanggal Kedatangan</label>
                                         <input type="date" class="form-control" name="arrival_date" placeholder="dd-mm-yyyy" min="01-01-1997" max="31-12-2050">
                                     </div>   
                                 </div>
