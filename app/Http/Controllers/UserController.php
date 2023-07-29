@@ -13,7 +13,7 @@ class UserController extends Controller
             $dataUsers = User::latest()->paginate(10);
             return view("user", compact("dataUsers"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
     
@@ -24,7 +24,7 @@ class UserController extends Controller
             $dataUser = User::where("username", $username)->firstOrFail();
             return view("user_update", compact("dataUser"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -35,7 +35,7 @@ class UserController extends Controller
             $dataUsers = User::where("username", $username)->firstOrFail();
             return view("user", compact("dataUsers"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -74,7 +74,7 @@ class UserController extends Controller
             }
             return redirect("/user");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -100,7 +100,7 @@ class UserController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/user");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 }

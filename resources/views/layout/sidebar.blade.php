@@ -31,7 +31,7 @@
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Menu</span>
             </a>
-            <div id="collapseOne" class="collapse <?php if (in_array(session('pagename'), ["Profil", "User", "Sales", "Customer", "Kapal", "Kedatangan Kapal", "Jenis Transaksi"])) {echo 'show';} ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar" aria-expanded="true">
+            <div id="collapseOne" class="collapse <?php if (in_array(session('pagename'), ["Profil", "User", "Sales", "Customer", "Kapal", "Kedatangan Kapal", "Jenis Transaksi", "Transaksi Piutang"])) {echo 'show';} ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar" aria-expanded="true">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Menu Utama</h6>
                     <a class="collapse-item <?php if (session('pagename') == 'Profil') {echo 'active';} ?>" href="{{route('profile.show', session('username'))}}">Profil</a>
@@ -43,19 +43,6 @@
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Menu Tambahan</h6>
                     <a class="collapse-item <?php if (session('pagename') == 'Kedatangan Kapal') {echo 'active';} ?>" href="{{route('arrival.index')}}">Kedatangan Kapal</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Transaksi</span>
-            </a>
-            <div id="collapseTwo" class="collapse <?php if (in_array(session('pagename'), ["Transaksi Piutang"])) {echo 'show';} ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Transaksi</h6>
                     <a class="collapse-item <?php if (session('pagename') == 'Transaksi Piutang') {echo 'active';} ?>" href="{{route('transaction.index')}}">Transaksi Piutang</a>
                 </div>
             </div>
@@ -70,11 +57,9 @@
             <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Jenis Laporan</h6>
-                    <a class="collapse-item" href="#">Stock</a>
-                    <a class="collapse-item" href="#">Finance</a>
-                    <a class="collapse-item" href="#">Transaction</a>
-                    <a class="collapse-item" href="#">Salary</a>
-                    <a class="collapse-item" href="#">Member</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Laporan User') {echo 'active';} ?>" href="#">Laporan Per User</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Laporan Kapal') {echo 'active';} ?>" href="#">Laporan Per Kapal</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Laporan Transaksi') {echo 'active';} ?>" href="#">Rekap Seluruh Transaksi</a>
                 </div>
             </div>
         </li>

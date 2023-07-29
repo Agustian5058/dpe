@@ -14,7 +14,7 @@ class SalesController extends Controller
             $dataSaless = Sales::latest()->paginate(10);
             return view("sales", compact("dataSaless"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
     
@@ -25,7 +25,7 @@ class SalesController extends Controller
             $dataSales = Sales::where("sales_id", $sales_id)->firstOrFail();
             return view("sales_update", compact("dataSales"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -36,7 +36,7 @@ class SalesController extends Controller
             $dataSaless = Sales::where("sales_id", $sales_id)->firstOrFail();
             return view("sales", compact("dataSaless"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -59,7 +59,7 @@ class SalesController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/sales");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -82,7 +82,7 @@ class SalesController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/sales");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 }

@@ -18,6 +18,8 @@ class Transaction extends Model
         'qty',
         'price',
         'note',
+        'previous_amount',
+        'current_amount',
         'transaction_debit_credit',
         'transaction_transaction_type',
         'transaction_vehicle_arrival',
@@ -27,103 +29,11 @@ class Transaction extends Model
         'deleted_by'
 
     ];
-
-    protected function transaction_id(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function transaction_date(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function transaction_container_number(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function consignee(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
     protected function goods_type(): Attribute
     {
         return Attribute::make(
             get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function feet(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function qty(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function size(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function unit(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function price(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function destination(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function description(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function debit(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => strtolower($value),
-        );
-    }
-    protected function credit(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucwords($value),
-            set: fn (string $value) => strtolower($value),
+            set: fn (string $value) => ucfirst($value),
         );
     }
     protected function transaction_transaction_type()

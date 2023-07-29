@@ -19,6 +19,7 @@ class Customer extends Model
         'customer_address',
         'customer_province',
         'customer_city',
+        'amount',
         'created_by',
         'updated_by',
         'deleted_by'

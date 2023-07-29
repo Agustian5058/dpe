@@ -37,6 +37,7 @@
                                             <th>Kota</th>
                                             <th>Kode Pos</th>
                                             <th>Fax</th>
+                                            <th>Saldo</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -51,6 +52,7 @@
                                             <th>Kota</th>
                                             <th>Kode Pos</th>
                                             <th>Fax</th>
+                                            <th>Saldo</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -66,6 +68,7 @@
                                                 <td>{{ $dataCustomer->customer_city }}</td>
                                                 <td>{{ $dataCustomer->customer_postal_code }}</td>
                                                 <td>{{ $dataCustomer->customer_fax }}</td>
+                                                <td>Rp. {{ number_format($dataCustomer->amount, 2) }}</td>
                                                 <td>
                                                     @if (session("role") == "Admin")
                                                         <a href="{{route('customer.edit', $dataCustomer->customer_id)}}" class="user_update btn btn-warning">Ubah</a>

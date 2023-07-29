@@ -13,7 +13,7 @@ class ProfileController extends Controller
             $profile = User::where("username", $username)->firstOrFail();
             return view("profile", compact("profile"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -31,7 +31,7 @@ class ProfileController extends Controller
             $profile = User::where("username", $username)->firstOrFail();
             return view("profile", compact("profile"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -70,7 +70,7 @@ class ProfileController extends Controller
             }
             return redirect("/user");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 }

@@ -4,7 +4,7 @@
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
-        @include('layout.sidebar')
+    @include('layout.sidebar')
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
@@ -13,48 +13,49 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Tipe Transaction</h1>
-                    <button href="#" class="btn btn-primary" data-target="#CreateTransactionTypeModal" data-toggle="modal">Tambah Jenis Transaksi Baru</button>
+                    <h1 class="h3 mb-2 text-gray-800">Data Kapal</h1>
+                    <button href="#" class="btn btn-primary" data-target="#CreateVehicleModal" data-toggle="modal">Tambah Kapal Baru</button>
                     <div class="my-4"></div>
                     <!-- DataTales Example -->
-                    @if (session()->has("message"))
-                    <div class="alert alert-{{session('status')}}">
-                        {{ session("message") }}
-                    </div>
-                    @endif
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    @if (session()->has("message"))
+                                    <div class="alert alert-{{session('status')}}">
+                                        {{ session("message") }}
+                                    </div>
+                                    @endif
                                     <thead>
                                         <tr>
-                                            <th>Nama Transaksi</th>
-                                            <th>Debit / Kredit</th>
+                                            <th>Nomor Kapal</th>
+                                            <th>Jenis Kendaraan</th>
+                                            <th>Nama Kapal</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>Nama Transaksi</th>
-                                            <th>Debit / Kredit</th>
+                                            <th>Nomor Kapal</th>
+                                            <th>Jenis Kendaraan</th>
+                                            <th>Nama Kapal</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @forelse ($dataTransactionTypes as $dataTransactionType)
+                                        @forelse ($dataVehicles as $dataVehicle)
                                             <tr>
-                                                <td>{{ $dataTransactionType->transaction_name }}</td>
-                                                <td>{{ $dataTransactionType->transaction_debit_credit }}</td>
+                                                <td>{{ $dataVehicle->vehicle_id }}</td>
+                                                <td>{{ $dataVehicle->vehicle_type }}</td>
+                                                <td>{{ $dataVehicle->vehicle_name }}</td>
                                                 <td>
-                                                    @if (session("role") == "Admin")
-                                                        <a href="{{route('transaction_type.edit', $dataTransactionType->transaction_name)}}" class="user_update btn btn-warning">Ubah</a>
-                                                        <!-- <a href="{{route('transaction_type.destroy', $dataTransactionType->transaction_name)}}" class="user_update btn btn-danger">Hapus</a> -->
-                                                    @endif
+                                                    <a href="{{route('vehicle.edit', $dataVehicle->vehicle_id)}}" class="user_update btn btn-warning">Ubah</a>
+                                                    <!-- <a href="{{route('vehicle.destroy', $dataVehicle->vehicle_id)}}" class="user_update btn btn-danger">Hapus</a> -->
                                                 </td>
                                             </tr>
                                         @empty
                                             <div class="alert alert-danger">
-                                                Data Jenis Transaksi belum Tersedia.
+                                                Data Kapal belum Tersedia.
                                             </div>
                                         @endforelse
                                     </tbody>
@@ -67,30 +68,37 @@
                 <!-- /.container-fluid -->
 
                 <!-- Create User Modal-->
-                <div class="modal fade" id="CreateTransactionTypeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="CreateVehicleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah Jenis Transaction Baru</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Kapal Baru</h5>
                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
-                            <form class="user" method="POST" action="{{route('transaction_type.store')}}">
+                            <form class="user" method="POST" action="{{route('vehicle.store')}}">
                                 @csrf
-                                <div class="modal-body">Masukkan Data Jenis Transaction Baru. Jenis Transaction tidak boleh sama.
+                                <div class="modal-body">Masukkan Data Kapal Baru. Nomor Kapal tidak boleh sama.
                                     <div class="my-4"></div>
                                     <div class="form-group">
-                                        <label>Jenis Transaksi</label>
-                                        <input type="text" class="form-control" name="transaction_name" placeholder="Masukkan Jenis Transaksi ...">
+                                    <label>Nomor Kapal</label>
+                                        <input type="text" class="form-control" name="vehicle_id" placeholder="Masukkan Nomor Kapal ...">
                                     </div>
                                     <div class="form-group">
-                                        <label>Debit / Kredit</label>
-                                        <select class="form-control" name="transaction_debit_credit">
-                                            <option value="Debit">-- Debit / Kredit (Debit)--</option>
-                                            <option value="Debit">Debit</option>
-                                            <option value="Credit">Kredit</option>
+                                    <label>Jenis Kapal</label>
+                                        <select class="form-control" name="vehicle_type">
+                                            <option value="Kapal">-- Pilih Jenis Kapal (Kapal)--</option>
+                                            <option value="Kapal">Kapal</option>
+                                            <option value="Truk">Truk</option>
+                                            <option value="Mobil">Mobil</option>
+                                            <option value="Motor">Motor</option>
+                                            <option value="Becak">Becak</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                    <label>Nama Kapal</label>
+                                        <input type="text" class="form-control" name="vehicle_name" placeholder="Masukkan Nama Kapal ...">
                                     </div>
                                 </div>
                                 <div class="modal-footer">

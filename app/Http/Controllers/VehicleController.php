@@ -14,7 +14,7 @@ class VehicleController extends Controller
             $dataVehicles = Vehicle::latest()->paginate(10);
             return view("vehicle", compact("dataVehicles"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
     
@@ -25,7 +25,7 @@ class VehicleController extends Controller
             $dataVehicle = Vehicle::where("vehicle_id", $vehicle_id)->firstOrFail();
             return view("vehicle_update", compact("dataVehicle"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -36,7 +36,7 @@ class VehicleController extends Controller
             $dataVehicles = Vehicle::where("vehicle_id", $vehicle_id)->firstOrFail();
             return view("vehicle", compact("dataVehicles"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -59,7 +59,7 @@ class VehicleController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/vehicle");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -82,7 +82,7 @@ class VehicleController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/vehicle");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 }

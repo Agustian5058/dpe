@@ -16,7 +16,7 @@ class VehicleArrivalController extends Controller
             $dataVehicles = Vehicle::latest()->paginate(10);
             return view("arrival", compact("dataArrivals", "dataVehicles"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
      public function edit(Request $request, $arrival_id)
@@ -27,7 +27,7 @@ class VehicleArrivalController extends Controller
             $dataVehicles = Vehicle::latest()->paginate(10);
             return view("arrival_update", compact("dataArrival", "dataVehicles"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -39,7 +39,7 @@ class VehicleArrivalController extends Controller
             $dataVehicles = Vehicle::latest()->paginate(10);
             return view("arrival", compact("dataArrivals", "dataVehicles"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -62,7 +62,7 @@ class VehicleArrivalController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/arrival");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -85,7 +85,7 @@ class VehicleArrivalController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/arrival");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -99,7 +99,7 @@ class VehicleArrivalController extends Controller
             $dataArrivals->delete();
             return redirect("/arrival");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 

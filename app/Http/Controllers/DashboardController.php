@@ -12,7 +12,7 @@ class DashboardController extends Controller
             $request->session()->put("pagename", "Dashboard");
             return view("dashboard");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -21,7 +21,7 @@ class DashboardController extends Controller
         if ($request->session()->has("username")) {
             return view("dashboard");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 }

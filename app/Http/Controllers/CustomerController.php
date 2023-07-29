@@ -16,7 +16,7 @@ class CustomerController extends Controller
             $dataSaless = Sales::latest()->paginate(10);
             return view("customer", compact("dataCustomers", "dataSaless"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
     
@@ -28,7 +28,7 @@ class CustomerController extends Controller
             $dataSaless = Sales::latest()->paginate(10);
             return view("customer_update", compact("dataCustomer", "dataSaless"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -40,7 +40,7 @@ class CustomerController extends Controller
             $dataSaless = Sales::latest()->paginate(10);
             return view("customer", compact("dataCustomers", "dataSaless"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -74,7 +74,7 @@ class CustomerController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/customer");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -91,6 +91,7 @@ class CustomerController extends Controller
                 "customer_phone"        => "",
                 "customer_postal_code"  => "",
                 "customer_fax"          => "",
+                "amount"                => "",
             ]);
             Customer::create([
                 "customer_sales"        => $request->customer_sales,
@@ -102,6 +103,7 @@ class CustomerController extends Controller
                 "customer_phone"        => $request->customer_phone,
                 "customer_postal_code"  => $request->customer_postal_code,
                 "customer_fax"          => $request->customer_fax,
+                "amount"                => 0,
                 "created_by"            => session("id")
             ]);
             $request->session()->put("pagename", "Customer");
@@ -109,7 +111,7 @@ class CustomerController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/customer");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
     
@@ -123,7 +125,7 @@ class CustomerController extends Controller
             $dataCustomers->delete();
             return redirect("/customer");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 }

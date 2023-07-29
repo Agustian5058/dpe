@@ -21,6 +21,8 @@ return new class extends Migration
             $table->double('qty')->nullable();
             $table->string('note');
             $table->double('price');
+            $table->double('previous_amount');
+            $table->double('current_amount');
             $table->string('transaction_debit_credit');
             $table->string('transaction_transaction_type');
             $table->string('transaction_vehicle_arrival');

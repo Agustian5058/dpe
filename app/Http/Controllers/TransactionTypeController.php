@@ -14,7 +14,7 @@ class TransactionTypeController extends Controller
             $dataTransactionTypes = TransactionType::latest()->paginate(15);
             return view("transaction_type", compact("dataTransactionTypes"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
     
@@ -25,7 +25,7 @@ class TransactionTypeController extends Controller
             $dataTransactionType = TransactionType::where("transaction_name", $transaction_name)->firstOrFail();
             return view("transaction_type_update", compact("dataTransactionType"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -36,7 +36,7 @@ class TransactionTypeController extends Controller
             $dataTransactionTypes = TransactionType::where("transaction_name", $transaction_name)->firstOrFail();
             return view("transaction_type", compact("dataTransactionTypes"));
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -57,7 +57,7 @@ class TransactionTypeController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/transaction_type");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 
@@ -78,7 +78,7 @@ class TransactionTypeController extends Controller
             $request->session()->flash("status", "success");
             return redirect("/transaction_type");
         } else {
-            return view("login");
+            return redirect("/login");
         }
     }
 }
