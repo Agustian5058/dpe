@@ -28,6 +28,7 @@
                                     @endif
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Nomor Kapal</th>
                                             <th>Jenis Kendaraan</th>
                                             <th>Nama Kapal</th>
@@ -36,6 +37,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th></th>
                                             <th>Nomor Kapal</th>
                                             <th>Jenis Kendaraan</th>
                                             <th>Nama Kapal</th>
@@ -45,6 +47,7 @@
                                     <tbody>
                                         @forelse ($dataVehicles as $dataVehicle)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $dataVehicle->vehicle_id }}</td>
                                                 <td>{{ $dataVehicle->vehicle_type }}</td>
                                                 <td>{{ $dataVehicle->vehicle_name }}</td>

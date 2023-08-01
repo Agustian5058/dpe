@@ -28,6 +28,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Tanggal Transaksi</th>
                                             <th>Kode Kedatangan</th>
                                             <th>Kapal</th>
@@ -45,6 +46,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th></th>
                                             <th>Tanggal Transaksi</th>
                                             <th>Kode Kedatangan</th>
                                             <th>Kapal</th>
@@ -63,13 +65,14 @@
                                     <tbody>
                                         @forelse ($dataTransactions as $dataTransaction)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $dataTransaction->transaction_date }}</td>
                                                 <td>{{ $dataTransaction->transaction_vehicle_arrival }}</td>
                                                 <td>{{ $dataTransaction->vehicle_name }}</td>
                                                 <td>{{ $dataTransaction->customer_name }} - {{ $dataTransaction->transaction_customer }}</td>
                                                 <td>{{ $dataTransaction->transaction_transaction_type }}</td>
                                                 <td>{{ $dataTransaction->note }}</td>
-                                                <td>Rp. {{ number_format($dataTransaction->price, 2) }}</td>
+                                                <td>Rp. {{ number_format($dataTransaction->price, 0) }}</td>
                                                 <td>{{ $dataTransaction->transaction_container_number }}</td>
                                                 <td>{{ $dataTransaction->goods_type }}</td>
                                                 <td>{{ $dataTransaction->feet }}</td>

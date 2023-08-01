@@ -28,6 +28,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Nama Transaksi</th>
                                             <th>Debit / Kredit</th>
                                             <th>Action</th>
@@ -35,7 +36,8 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>Nama Transaksi</th>
+                                            <th></th>
+                                            <th>Nama Transaksi</th>
                                             <th>Debit / Kredit</th>
                                             <th>Action</th>
                                         </tr>
@@ -43,6 +45,7 @@
                                     <tbody>
                                         @forelse ($dataTransactionTypes as $dataTransactionType)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $dataTransactionType->transaction_name }}</td>
                                                 <td>{{ $dataTransactionType->transaction_debit_credit }}</td>
                                                 <td>

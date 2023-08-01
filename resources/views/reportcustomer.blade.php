@@ -4,7 +4,7 @@
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
-        @include('layout.sidebar')
+    @include('layout.sidebar')
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
@@ -13,10 +13,10 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Transaksi</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Data Customer</h1>
                     <button href="#" class="btn btn-primary" data-target="#FilterTransactionModal" data-toggle="modal">Filter Transaksi</button>
                     <div class="my-4"></div>
-                    <a href="{{route('laporan-transaksi.export-excel')}}" class="btn btn-primary">Export Excel</a>
+                    <a href="{{route('laporan-customer.export-excel')}}" class="btn btn-primary">Export Excel</a>
                     <div class="my-4"></div>
                     <!-- DataTales Example -->
                     @if (session()->has("message"))
@@ -27,10 +27,11 @@
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
-                                @include('reporttransaction_table')
+                                @include('reportcustomer_table', $dataCustomers)
                             </div>
                         </div>
                     </div>
+
                     <!-- Create User Modal-->
                     <div class="modal fade" id="FilterTransactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -66,18 +67,6 @@
                                             @endforeach
                                         </select>
                                         <div class="my-4"></div>
-                                            <label>Pilih Tanggal Kedatangan Kapal</label>
-                                        <select class="form-control" name="arrival_id">
-                                            @if (session()->has("dataArrival"))
-                                                <option value="{{session('dataArrival')->arrival_id}}">{{session("dataArrival")->arrival_date}} {{session("dataArrival")->vehicle_id}} {{session("dataArrival")->vehicle_name}}</option>
-                                            @else
-                                                <option value="">-- Pilih Kedatangan Kapal --</option>
-                                            @endif
-                                            @foreach ($dataArrivals as $dataArrival)
-                                                <option value="{{$dataArrival->arrival_id}}">{{$dataArrival->arrival_date}} {{$dataArrival->vehicle_id}} {{$dataArrival->vehicle_name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="my-4"></div>
                                             <label>Pilih Customer</label>
                                         <select class="form-control" name="customer_id">
                                             @if (session()->has("dataCustomer"))
@@ -87,18 +76,6 @@
                                             @endif
                                             @foreach ($dataCustomers as $dataCustomer)
                                                 <option value="{{$dataCustomer->customer_id}}">{{$dataCustomer->customer_name}} {{$dataCustomer->customer_id}}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="my-4"></div>
-                                        <label>Jenis Transaksi</label>
-                                        <select class="form-control" name="transaction_name">
-                                            @if (session()->has("dataTransactionType"))
-                                                <option value="{{session('dataTransactionType')->transaction_name}}">{{session("dataTransactionType")->transaction_debit_credit}} - {{session("dataTransactionType")->transaction_name}}</option>
-                                            @else
-                                                <option value="">-- Pilih Jenis Transaksi --</option>
-                                            @endif
-                                            @foreach ($dataTransactionTypes as $dataTransactionType)
-                                                <option value="{{$dataTransactionType->transaction_name}}">{{$dataTransactionType->transaction_debit_credit}} - {{$dataTransactionType->transaction_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

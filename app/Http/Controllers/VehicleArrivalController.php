@@ -12,7 +12,7 @@ class VehicleArrivalController extends Controller
     {
         if ($request->session()->has("username")) {
             $request->session()->put("pagename", "Kedatangan Kapal");
-            $dataArrivals = VehicleArrival::join("vehicles", "vehicles.vehicle_id", "=", "vehicle_arrivals.arrival_vehicle")->get(["vehicle_arrivals.*", "vehicles.vehicle_name"]);
+            $dataArrivals = VehicleArrival::join("vehicles", "vehicles.vehicle_id", "=", "vehicle_arrivals.arrival_vehicle")->orderBy('arrival_id')->get(["vehicle_arrivals.*", "vehicles.vehicle_name"]);
             $dataVehicles = Vehicle::latest()->paginate(10);
             return view("arrival", compact("dataArrivals", "dataVehicles"));
         } else {

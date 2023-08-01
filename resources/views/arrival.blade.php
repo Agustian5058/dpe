@@ -28,6 +28,7 @@
                                     @endif
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Kode Kedatangan</th>
                                             <th>Kode Kapal</th>
                                             <th>Nama Kapal</th>
@@ -37,6 +38,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th></th>
                                             <th>Kode Kedatangan</th>
                                             <th>Kode Kapal</th>
                                             <th>Nama Kapal</th>
@@ -47,6 +49,7 @@
                                     <tbody>
                                         @forelse ($dataArrivals as $dataArrival)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $dataArrival->arrival_id }}</td>
                                                 <td>{{ $dataArrival->arrival_vehicle }}</td>
                                                 <td>{{ $dataArrival->vehicle_name }}</td>

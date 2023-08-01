@@ -19,7 +19,7 @@ class TransactionController extends Controller
             ->join("vehicle_arrivals", "transactions.transaction_vehicle_arrival", "=", "vehicle_arrivals.arrival_id")
             ->join("vehicles", "vehicle_arrivals.arrival_vehicle", "=", "vehicles.vehicle_id")
             ->get(["transactions.*", "customers.customer_name", "vehicles.vehicle_name"]);
-            $dataCustomers = Customer::orderBy("customer_name")->orderBy("customer_name")->get();
+            $dataCustomers = Customer::orderBy("customer_name")->get();
             $dataArrivals = VehicleArrival::join("vehicles", "vehicles.vehicle_id", "=", "vehicle_arrivals.arrival_vehicle")->orderBy("vehicles.vehicle_id")->get(["vehicle_arrivals.*", "vehicles.vehicle_name"]);
             $dataTransactionTypes = TransactionType::orderBy("transaction_name")->get();
             return view("transaction", compact("dataTransactions", "dataCustomers", "dataArrivals", "dataTransactionTypes"));

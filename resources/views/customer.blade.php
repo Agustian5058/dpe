@@ -28,6 +28,7 @@
                                     @endif
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Kode Customer</th>
                                             <th>Nama Customer</th>
                                             <th>Handle Oleh</th>
@@ -43,6 +44,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th></th>
                                             <th>Kode Customer</th>
                                             <th>Nama Customer</th>
                                             <th>Handle Oleh</th>
@@ -59,6 +61,7 @@
                                     <tbody>
                                         @forelse ($dataCustomers as $dataCustomer)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $dataCustomer->customer_id }}</td>
                                                 <td>{{ $dataCustomer->customer_name }}</td>
                                                 <td>{{ $dataCustomer->customer_sales }}</td>
@@ -68,7 +71,7 @@
                                                 <td>{{ $dataCustomer->customer_city }}</td>
                                                 <td>{{ $dataCustomer->customer_postal_code }}</td>
                                                 <td>{{ $dataCustomer->customer_fax }}</td>
-                                                <td>Rp. {{ number_format($dataCustomer->amount, 2) }}</td>
+                                                <td>Rp. {{ number_format($dataCustomer->amount, 0) }}</td>
                                                 <td>
                                                     @if (session("role") == "Admin")
                                                         <a href="{{route('customer.edit', $dataCustomer->customer_id)}}" class="user_update btn btn-warning">Ubah</a>

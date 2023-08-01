@@ -54,12 +54,11 @@
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Laporan</span>
             </a>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapseThree" class="collapse  <?php if (in_array(session('pagename'), ["Laporan Customer", "Laporan Transaksi"])) {echo 'show';} ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Jenis Laporan</h6>
-                    <a class="collapse-item <?php if (session('pagename') == 'Laporan User') {echo 'active';} ?>" href="#">Laporan Per User</a>
-                    <a class="collapse-item <?php if (session('pagename') == 'Laporan Kapal') {echo 'active';} ?>" href="#">Laporan Per Kapal</a>
-                    <a class="collapse-item <?php if (session('pagename') == 'Laporan Transaksi') {echo 'active';} ?>" href="#">Rekap Seluruh Transaksi</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Laporan Customer') {echo 'active';} ?>" href="{{route('laporan-customer.index')}}">Laporan Per User</a>
+                    <a class="collapse-item <?php if (session('pagename') == 'Laporan Transaksi') {echo 'active';} ?>" href="{{route('laporan-transaksi.index')}}">Laporan Transaksi</a>
                 </div>
             </div>
         </li>

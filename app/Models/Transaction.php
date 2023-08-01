@@ -29,13 +29,6 @@ class Transaction extends Model
         'deleted_by'
 
     ];
-    protected function goods_type(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-            set: fn (string $value) => ucfirst($value),
-        );
-    }
     protected function transaction_transaction_type()
     {
         return $this->belongsTo('App/Models/TransactionType', 'transaction_transaction_type', 'transaction_name');

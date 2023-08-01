@@ -28,6 +28,7 @@
                                     @endif
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Kode Sales</th>
                                             <th>Nama Sales</th>
                                             <th>Keterangan</th>
@@ -36,6 +37,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th></th>
                                             <th>Kode Sales</th>
                                             <th>Nama Sales</th>
                                             <th>Keterangan</th>
@@ -45,6 +47,7 @@
                                     <tbody>
                                         @forelse ($dataSaless as $dataSales)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $dataSales->sales_id }}</td>
                                                 <td>{{ $dataSales->sales_name }}</td>
                                                 <td>{{ $dataSales->sales_description }}</td>

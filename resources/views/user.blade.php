@@ -28,6 +28,7 @@
                                     @endif
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Username</th>
                                             <th>Nama User</th>
                                             <th>Role</th>
@@ -38,6 +39,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th></th>
                                             <th>Username</th>
                                             <th>Nama User</th>
                                             <th>Role</th>
@@ -49,6 +51,7 @@
                                     <tbody>
                                         @forelse ($dataUsers as $dataUser)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $dataUser->username }}</td>
                                                 <td>{{ $dataUser->name }}</td>
                                                 <td>{{ $dataUser->role }}</td>
